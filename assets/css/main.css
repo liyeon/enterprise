@@ -1,0 +1,100 @@
+.sc{
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.group-desc{
+  font-size: 52px;
+  line-height: 1.35em;
+  font-weight: 700;
+  color: #fff;
+}
+
+.group-desc .small,
+.desc.small{
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.67em;
+  color: #fff;
+}
+
+.sc::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .6);
+  z-index: -1;
+}
+.sc .bg{
+  position: absolute;
+  z-index: -2;
+}
+
+.sc .desc{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  white-space: nowrap;
+  color: #fff;
+}
+
+
+/* 인트로 */
+.sc-intro video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+.sc-intro .scroll{
+  width: 40px;
+  height: 40px;
+  background: url(../images/scroll.svg) no-repeat center/cover;
+  position: absolute;
+  top: calc(100vh - 80px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sc-intro .desc{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  white-space: nowrap;
+  color: #fff;
+}
+
+/*비주얼*/
+.sc-visual .group-title{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+  line-height: 1.2em;
+  font-weight: 600;
+  color: #fff;
+}
+
+
+/*긱워커*/
+.sc-gig{
+  display: flex;
+  position: relative;
+  min-height: 100vh;
+  font-weight: 600;
+}
+.sc-gig .headline{
+  font-size: 72px;
+  line-height: 1.28em;
+}
+.sc-gig .desc{
+  font-size: 24px;
+  line-height: 1.67em;
+}
