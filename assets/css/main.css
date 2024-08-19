@@ -1,25 +1,23 @@
-.sc{
+.sc {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
 }
 
-.group-desc{
+.group-desc {
   font-size: 52px;
   line-height: 1.35em;
-  font-weight: 700;
   color: #fff;
 }
 
 .group-desc .small,
-.desc.small{
-  font-weight: 600;
+.desc.small {
   font-size: 24px;
   line-height: 1.67em;
   color: #fff;
 }
 
-.sc::before{
+.sc::before {
   content: "";
   position: absolute;
   left: 0;
@@ -29,12 +27,16 @@
   background: rgba(0, 0, 0, .6);
   z-index: -1;
 }
-.sc .bg{
+
+.sc .bg {
   position: absolute;
   z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.sc .desc{
+.sc .desc {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -43,15 +45,27 @@
   color: #fff;
 }
 
+.sc-text {
+  padding: 0 100px;
+}
+
+.sc-text .headline {
+  font-size: 72px;
+  line-height: 1.28em;
+}
 
 /* 인트로 */
-.sc-intro video{
+.sc-intro video {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   z-index: -2;
 }
-.sc-intro .scroll{
+
+.sc-intro .scroll {
   width: 40px;
   height: 40px;
   background: url(../images/scroll.svg) no-repeat center/cover;
@@ -61,7 +75,7 @@
   transform: translateX(-50%);
 }
 
-.sc-intro .desc{
+.sc-intro .desc {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -71,30 +85,97 @@
 }
 
 /*비주얼*/
-.sc-visual .group-title{
+.sc-visual .headline {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   font-size: 100px;
   line-height: 1.2em;
-  font-weight: 600;
   color: #fff;
 }
 
-
 /*긱워커*/
-.sc-gig{
+.sc-gig {
   display: flex;
+  justify-content: center;
+  flex-direction: column;
   position: relative;
   min-height: 100vh;
-  font-weight: 600;
 }
-.sc-gig .headline{
-  font-size: 72px;
-  line-height: 1.28em;
-}
-.sc-gig .desc{
+
+.sc-gig .desc {
   font-size: 24px;
   line-height: 1.67em;
+  margin-left: auto;
+}
+
+/* 가치를 증명~ */
+.sc-prove {
+  position: relative;
+  padding: 218px 0 226px;
+  background: url(../images/challenge/prove.jpg) no-repeat 50%;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.sc-prove .headline {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-size: 72px;
+  line-height: 1.28em;
+  text-align: center;
+}
+
+.sc-prove::after,
+.sc-prove::before {
+  content: '';
+  position: absolute;
+  max-width: 21.875%;
+  width: 21.875%;
+  /* width: calc(68%* max(var(--progress-visible) - .15, 0)); */
+  height: 140px;
+  background-color: #fff;
+}
+
+.sc-prove:after {
+  bottom: 0;
+  left: 0;
+}
+
+.sc-prove::before {
+  top: 0;
+  right: 0;
+}
+/* 다양한 재능 */
+.sc-talent{
+  display: flex;
+}
+.sc-talent .headline{
+  display: flex;
+  align-items: center;
+  position: sticky;
+  height: 100vh;
+  top: 0;
+  width: 470px;
+}
+.sc-talent .group-img{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 186px;
+  padding: 100vh 0;
+}
+.sc-talent .group-img .img-box:nth-of-type(odd){
+	align-self: flex-end;
+}
+.sc-talent .group-img .img-box{
+  width: 437px;
+}
+.sc-talent .group-img .img-box figcaption{
+  margin: 12px 0 0;
+  font-size: 16px;
 }
