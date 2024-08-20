@@ -20,10 +20,13 @@
 	height: 138px;
 	z-index: 100;
 	padding: 0 100px;
-	/* transform: translateY(-100%); */
+	transform: translateY(-100%);
+	opacity: 0;
 	transition: transform .3s, color .5s;
 }
-
+#header.on{
+	transform:translate(0); opacity:1;
+}
 #header .logo{
 	width: 100px;
 	color: #fff;
@@ -61,14 +64,18 @@
 	position: absolute;
 	top: 33px;
 	right: 0;
-	/* opacity: 0;
-	visibility: hidden; */
+	opacity: 0;
+	visibility: hidden;
 	text-align: center;
 	background-color: #000;
 	border: 1px solid #5a5a5a;
 	border-radius: 6px;
 	transition: all .3s;
 	padding: 5px 0;
+}
+#header .gnb .lang-list.on{
+	opacity: 1;
+	visibility: visible;
 }
 #header .gnb .lang-list .lang-item.on a{
 	opacity: 1;

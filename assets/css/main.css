@@ -270,7 +270,7 @@
 .sc-safety .right-wrap{
   flex: 1;
   color: #fff;
-  padding: 100vh 100px 0 13.5417vw;
+  padding: 100vh 0 0 100px;
 }
 .sc-safety .right-wrap .desc{
   max-width: 750px;
