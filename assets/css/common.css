@@ -45,22 +45,17 @@
   opacity: 1;
   visibility: visible;
 }
+.btn-top.bottom{
+  position: absolute;
+  opacity: 1;
+  visibility: visible;
+  right: 100px;
+  bottom: 110px;
+}
 .sc {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-}
-
-.sc.on::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, .6);
-  z-index: -1;
-  transition:.3s;
 }
 
 .sc .bg {

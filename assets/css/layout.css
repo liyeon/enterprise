@@ -7,7 +7,9 @@
 #wrap{
   min-width: 1440px;
 }
-
+#main{
+	position: relative;
+}
 /* header */
 #header{
 	display: flex;
@@ -94,6 +96,8 @@
 	background: #000;
 	color: #fff;
 	font-size: 14px;
+	position: relative;
+	z-index: 2;
 }
 .group-logo{
 	width: 193px;
