@@ -65,17 +65,7 @@
   height: 100%;
   object-fit: cover;
 }
-.sc.on::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, .6);
-  z-index: -1;
-  transition:.3s;
-}
+
 .sc .desc {
   position: absolute;
   top: 50%;
@@ -83,13 +73,8 @@
   transform: translateX(-50%) translateY(-50%);
   white-space: nowrap;
   color: #fff;
-  opacity: 0; /* 기본적으로 숨겨진 상태 */
-  transition: opacity 1s ease-in-out;
 }
 
-.sc-intro .desc.show {
-  opacity: 1; /* 애니메이션 후 나타나는 상태 */
-}
 .sc-text {
   padding: 0 100px;
 }

@@ -24,14 +24,28 @@
 	padding: 0 100px;
 	transform: translateY(-100%);
 	opacity: 0;
-	transition: transform .3s, color .5s;
+	transition: transform .3s;
+	color: #fff;
 }
+#header.dark{
+	color: #000;
+}
+#header.dark .logo{
+	color: #000;
+	filter: brightness(0) invert(0);
+}
+
+#header.dark .gnb .icon,
+#header.dark .gnb .chevron{
+	filter: brightness(0) invert(0);
+	transition: .3s;
+}
+
 #header.on{
 	transform:translate(0); opacity:1;
 }
 #header .logo{
 	width: 100px;
-	color: #fff;
 	filter: brightness(0) invert(1);
 }
 
@@ -43,7 +57,6 @@
 	font-size: 18px;
 }
 #header .gnb .gnb-item{
-	color: #fff;
 	transition: color .5s;
 	position: relative;
 }

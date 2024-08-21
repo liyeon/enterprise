@@ -27,7 +27,7 @@ ScrollTrigger.create({
 	trigger:'#footer',
 	start:'bottom bottom',//[트리거 기준 시작]  [윈도우 기준&화면 기준]
 	end:'bottom bottom',//[트리거 기준 끝] [윈도우 기준&화면 기준]
-	markers:false,
+	markers:true,
 	scrub:0,
 	onEnter:function(){
 		$('.sc-banner').removeClass('on');
@@ -68,7 +68,7 @@ ScrollTrigger.create({
   start: "top top",
   end: "bottom bottom",
   endTrigger: "#footer",
-  markers: true,
+  markers: false,
   onEnter: function () {
 		$(".btn-top").addClass("bottom");
   },
@@ -79,35 +79,88 @@ ScrollTrigger.create({
 
 
 
-//우뜨케 해야해ㅐ......우뜨..우뜨케,,.......아아아앙앙
-// 요소가 스크롤에 따라 나타나도록 하는 함수
-const animateTextOnScroll = (selector) => {
-  gsap.fromTo(selector,
-    { opacity: 0 }, // 초기 상태
-    { 
-      opacity: 1, // 최종 상태
-      scrollTrigger: {
-        trigger: selector,
-        start: "top 75%", // 요소가 화면의 75% 위치에 도달했을 때
-        end: "top 80%", // 요소가 화면의 25% 위치에 도달했을 때
-        scrub: true, // 스크롤에 맞춰 애니메이션 동기화
-      },
-      duration: 1,
-    }
-  );
-};
 
-// 스크롤 트리거로 .sc-intro 섹션을 고정시키는 설정
-ScrollTrigger.create({
-  trigger: ".sc-intro",
-  start: "top top",
-  end: "+=700", // 고정될 범위
-  pin: true,
-  pinSpacing: false,
+const intro = gsap.timeline({
+	scrollTrigger: {
+		trigger: ".sc-intro",
+		start: "top top",
+		end: "+=8000",// 애니메이션이 끝나는 지점: 스크롤할 총 영역을 7000px로 설정
+		scrub: 0,
+		pin: true, // 애니메이션 완료 될 때까지 섹션 유지
+		markers: false,
+	}
+});
+intro
+		.from(".sc-intro .d01", {autoAlpha: 0, duration: 100}) // autoAlpha: 0에서 시작하여 duration: 100초 동안 1로 변화
+    .to(".sc-intro .d01", {autoAlpha: 0, duration: 100})
+    .from(".sc-intro .d02", {autoAlpha: 0, duration: 100})
+    .to(".sc-intro .d02", {autoAlpha: 0, duration: 100})
+    .from(".sc-intro .d03", {autoAlpha: 0, duration: 100})
+    .to(".sc-intro .d03", {autoAlpha: 0, duration: 100})
+    .from(".sc-intro .d04", {autoAlpha: 0, duration: 100})
+
+
+//비주얼
+//우뜨케 해야해ㅐ......우뜨..우뜨케,,.......아아아앙앙 이게 맞ㅈ나..
+const visual = gsap.timeline({
+	scrollTrigger: {
+			trigger: ".sc-visual",
+			start: "top top",
+			end: "+=10000",
+			scrub: 0,
+			pin: true,
+			markers: false,
+	}
 });
 
-// 각 텍스트 요소에 애니메이션을 적용
-animateTextOnScroll(".d01");
-animateTextOnScroll(".d02");
-animateTextOnScroll(".d03");
-animateTextOnScroll(".d04");
+visual
+	.from(".sc-visual .headline", { autoAlpha: 0, duration: 200 },'a')
+	.to(".sc-visual .headline span:nth-child(1)", { xPercent: 100, duration: 100 }, 'b')
+	.to(".sc-visual .headline span:nth-child(3)", { xPercent: -100, duration: 100 }, 'b')
+	.to(".sc-visual .headline", { autoAlpha: 0, duration: 100 }, 'c')
+	.to(".sc-visual .bg:nth-child(3)", { height: 0, duration: 100 })
+	.to(".sc-visual .bg:nth-child(2)", { height: 0, duration: 100 })
+	.from(".sc-visual .desc", { autoAlpha: 0, duration: 100 });
+
+// 헤더..
+ScrollTrigger.create({
+	trigger: ".sc-gig", 
+	start: "top top", 
+	end: "bottom bottom", 
+	endTrigger: ".sc-prove",
+	markers:false,
+	onEnter: function() {
+			$('#header').addClass('dark'); 
+	},
+	onLeaveBack: function() {
+			$('#header').removeClass('dark'); 
+	}
+});
+	ScrollTrigger.create({
+    trigger: ".dark-inner", 
+    start: "top top", 
+    end: "bottom bottom", 
+		markers:false,
+		endTrigger: "",
+    onEnter: function() {
+			$('#header').removeClass('dark'); 
+    },
+    onLeaveBack: function() {
+			$('#header').addClass('dark'); 
+    }
+});
+ScrollTrigger.create({
+	trigger: ".sc-desc", 
+	start: "top top", 
+	end: "bottom bottom", 
+	markers:false,
+	endTrigger: "",
+	onEnter: function() {
+		$('#header').addClass('dark'); 
+	},
+	onLeaveBack: function() {
+		$('#header').removeClass('dark'); 
+	}
+});
+
+//prove
