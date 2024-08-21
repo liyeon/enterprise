@@ -3,6 +3,10 @@ $('.btn-lang').click(function (e) {
   $('.lang-list').toggleClass('on');
 });
 
+$(window).scroll(function() {
+  $('.lang-list').removeClass('on');
+});
+
 //header
 ScrollTrigger.create({
 	trigger:'body',
@@ -17,9 +21,6 @@ ScrollTrigger.create({
 		$('#header').removeClass('on');
 	}
 });
-
-//인트로
-
 
 //footer
 ScrollTrigger.create({
@@ -75,3 +76,38 @@ ScrollTrigger.create({
     $(".btn-top").removeClass("bottom");
   },
 });
+
+
+
+//우뜨케 해야해ㅐ......우뜨..우뜨케,,.......아아아앙앙
+// 요소가 스크롤에 따라 나타나도록 하는 함수
+const animateTextOnScroll = (selector) => {
+  gsap.fromTo(selector,
+    { opacity: 0 }, // 초기 상태
+    { 
+      opacity: 1, // 최종 상태
+      scrollTrigger: {
+        trigger: selector,
+        start: "top 75%", // 요소가 화면의 75% 위치에 도달했을 때
+        end: "top 80%", // 요소가 화면의 25% 위치에 도달했을 때
+        scrub: true, // 스크롤에 맞춰 애니메이션 동기화
+      },
+      duration: 1,
+    }
+  );
+};
+
+// 스크롤 트리거로 .sc-intro 섹션을 고정시키는 설정
+ScrollTrigger.create({
+  trigger: ".sc-intro",
+  start: "top top",
+  end: "+=700", // 고정될 범위
+  pin: true,
+  pinSpacing: false,
+});
+
+// 각 텍스트 요소에 애니메이션을 적용
+animateTextOnScroll(".d01");
+animateTextOnScroll(".d02");
+animateTextOnScroll(".d03");
+animateTextOnScroll(".d04");

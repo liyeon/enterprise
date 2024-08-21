@@ -20,15 +20,6 @@
   transform: translateX(-50%);
 }
 
-.sc-intro .desc {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  white-space: nowrap;
-  color: #fff;
-}
-
 /*비주얼*/
 .sc-visual .headline {
   display: flex;
