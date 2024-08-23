@@ -23,7 +23,7 @@
 	z-index: 100;
 	padding: 0 100px;
 	transform: translateY(-100%);
-	opacity: 0;
+	/* opacity: 0; */
 	transition: transform .3s;
 	color: #fff;
 }
@@ -42,7 +42,8 @@
 }
 
 #header.on{
-	transform:translate(0); opacity:1;
+	transform:translate(0);
+	 /* opacity:1; */
 }
 #header .logo{
 	width: 100px;
