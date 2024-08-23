@@ -31,8 +31,9 @@ $(window).scroll(function() {
 
 // 탑버튼
 // 버튼 클릭 시 상단으로 스크롤
-$('.btn-top').on('click',function() {
-	gsap.to(window, { duration: 1, scrollTo: 0 });
+$('.btn-top').click(function (e) { 
+	$('html,body').animate({scrollTop:0},400);
+	return false;
 });
 
 
