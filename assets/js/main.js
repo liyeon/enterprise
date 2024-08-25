@@ -110,7 +110,7 @@ visual
 		});
 	
 		prove
-		.to($(el).find('.headline span'),{x:0})//// headline span의 x 위치를 0으로
+		.from($(el).find('.headline span'),{x:0})//// headline span의 x 위치를 0으로
 		.from($(el),{'--x':100},'<')// 요소의 '--x' CSS 변수를 100으로 애니메이션
 	})
 
