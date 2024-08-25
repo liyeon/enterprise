@@ -78,6 +78,22 @@ visual
 	.from(".sc-visual .desc", { autoAlpha: 0,},)
 	.to(".sc-visual", {'--opacity': 1,});
 
+	$('.sc-prove').each(function(i,el){
+		const prove = gsap.timeline({
+			scrollTrigger: {
+					trigger: el,
+					start: "top 75%",
+					end: "100% 97%",
+					scrub: 0,
+					markers: false,
+			}
+		});
+	
+		prove
+		.from($(el).find('.headline span'),{x:0})//// headline span의 x 위치를 0으로
+		.from($(el),{'--x':100},'<')// 요소의 '--x' CSS 변수를 100으로 애니메이션
+	})
+
 	const possibility = gsap.timeline({
 		scrollTrigger: {
 				trigger: ".sc-possibility",
@@ -97,54 +113,8 @@ visual
 			return window.innerWidth-100;
 		}
 	},'<')
-
-	$('.sc-prove').each(function(i,el){
-		const prove = gsap.timeline({
-			scrollTrigger: {
-					trigger: el,
-					start: "top 75%",
-					end: "100% 97%",
-					scrub: 0,
-					markers: false,
-			}
-		});
 	
-		prove
-		.from($(el).find('.headline span'),{x:0})//// headline span의 x 위치를 0으로
-		.from($(el),{'--x':100},'<')// 요소의 '--x' CSS 변수를 100으로 애니메이션
-	})
-
-	const color = gsap.timeline({
-		scrollTrigger: {
-				trigger: ".sc-color",
-				start: "top 95%",
-				end: "100% 80%",
-				scrub: 0,
-				// markers: true,
-		}
-	});
-	color
-	.from('.sc-color .box:nth-child(1)',{xPercent:-50})
-	.from('.sc-color .box:nth-child(2)',{xPercent:-50},'<')
-	.from('.sc-color .box:nth-child(3)',{xPercent:50},'<')
-	const color2 = gsap.timeline({
-		scrollTrigger: {
-				trigger: ".sc-color",
-				start: "top 45%",
-				end: "100% 30%",
-				scrub: 0,
-				// markers: true,
-				onEnter:function(){
-					$('.sc-color').addClass('show')
-				},
-				onLeaveBack:function(){
-					$('.sc-color').removeClass('show')
-				}
-		}
-	});
-	color2.from('.sc-color .headline',{autoAlpha:0})
 // area1
-
 const area1Headline = $('.sc-safety .area1 .headline');
 const area1 = gsap.timeline({
 	scrollTrigger: {
@@ -179,6 +149,37 @@ area1
 
 .to('.sc-safety .area1 .card-item .icon-lock:nth-child(2)',0.5,{opacity:0},'b-=1') // 둘이 합쳐 1초 
 .to('.sc-safety .area1 .card-item .icon-lock:nth-child(1)',0.5,{opacity:1},'b-=0.5')
+
+const color = gsap.timeline({
+	scrollTrigger: {
+			trigger: ".sc-color",
+			start: "top 95%",
+			end: "100% 80%",
+			scrub: 0,
+			// markers: true,
+	}
+});
+
+color
+.from('.sc-color .box:nth-child(1)',{xPercent:-50})
+.from('.sc-color .box:nth-child(2)',{xPercent:-50},'<')
+.from('.sc-color .box:nth-child(3)',{xPercent:50},'<')
+const color2 = gsap.timeline({
+	scrollTrigger: {
+			trigger: ".sc-color",
+			start: "top 45%",
+			end: "100% 30%",
+			scrub: 0,
+			// markers: true,
+			onEnter:function(){
+				$('.sc-color').addClass('show')
+			},
+			onLeaveBack:function(){
+				$('.sc-color').removeClass('show')
+			}
+	}
+});
+color2.from('.sc-color .headline',{autoAlpha:0})
 
 gsap.set('.area2 .left-wrap',{autoAlpha:0})
 ScrollTrigger.create({
