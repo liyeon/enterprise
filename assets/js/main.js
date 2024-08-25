@@ -78,21 +78,6 @@ visual
 	.from(".sc-visual .desc", { autoAlpha: 0,},)
 	.to(".sc-visual", {'--opacity': 1,});
 
-	$('.sc-prove').each(function(i,el){
-		const prove = gsap.timeline({
-			scrollTrigger: {
-					trigger: el,
-					start: "top 75%",
-					end: "100% 97%",
-					scrub: 0,
-					markers: false,
-			}
-		});
-	
-		prove
-		.from($(el).find('.headline span'),{x:0})//// headline span의 x 위치를 0으로
-		.from($(el),{'--x':100},'<')// 요소의 '--x' CSS 변수를 100으로 애니메이션
-	})
 
 	const possibility = gsap.timeline({
 		scrollTrigger: {
@@ -234,6 +219,22 @@ ScrollTrigger.create({
 });
 
 //prove
+$('.sc-prove').each(function(i,el){
+	const prove = gsap.timeline({
+		scrollTrigger: {
+				trigger: el,
+				start: "top 75%",
+				end: "100% 97%",
+				scrub: 0,
+				markers: false,
+		}
+	});
+
+	prove
+	.from($(el).find('.headline span'),{x:0})//// headline span의 x 위치를 0으로
+	.from($(el),{'--x':100},'<')// 요소의 '--x' CSS 변수를 100으로
+})
+
 //footer
 ScrollTrigger.create({
 	trigger:'#footer',
@@ -263,21 +264,21 @@ ScrollTrigger.create({
 });
 
 ScrollTrigger.create({
-  trigger: ".sc-visual",
-  start: "top top",
-  end: "bottom bottom",
-  endTrigger: "#footer",
-  // markers: true,
-  onUpdate: function (e) {// 스크롤이 움직일 때마다 호출
-    direction = e.direction; // 스크롤 방향을 나타냄 아래로 스크롤 하는 경우(1) 위로 스크롤 하는 경우 -1
-    if (direction == 1) {
-      $(".btn-top").removeClass("on");
-    } else {
-      $(".btn-top").addClass("on");
-    }
-  },
-  onLeaveBack: function () {
+	trigger: ".sc-visual",
+	start: "top top",
+	end: "bottom bottom",
+	endTrigger: ".sc-ground",
+	// markers: true,
+	onUpdate: function (e) {// 스크롤이 움직일 때마다 호출
+		direction = e.direction; // 스크롤 방향을 나타냄 아래로 스크롤 하는 경우(1) 위로 스크롤 하는 경우 -1
+		if (direction == 1) {
+			$(".btn-top").removeClass("on");
+		} else {
+			$(".btn-top").addClass("on");
+		}
+	},
+	onLeaveBack: function () {
 		// alert('')
-    $(".btn-top").removeClass("on");
-  },
+		$(".btn-top").removeClass("on");
+	},
 });
