@@ -11,24 +11,6 @@ $(window).scroll(function() {
   $('.lang-list').removeClass('on');
 });
 
-// //header
-// ScrollTrigger.create({
-// 	trigger:'body',
-// 	start:'10% 0',
-// 	end:'100% 100%',
-// 	markers:false,
-// 	scrub:0,
-// 	onEnter:function(){
-// 		$('#header').addClass('on');
-// 	},
-// 	onLeaveBack:function(){
-// 		$('#header').removeClass('on');
-// 	}
-// });
-
-
-
-
 // 탑버튼
 // 버튼 클릭 시 상단으로 스크롤
 $('.btn-top').click(function (e) { 
@@ -36,12 +18,7 @@ $('.btn-top').click(function (e) {
 	return false;
 });
 
-
-
-
-
-
-
+//intro
 const intro = gsap.timeline({
 	scrollTrigger: {
 		trigger: ".sc-intro",
@@ -50,31 +27,34 @@ const intro = gsap.timeline({
 		scrub: 0,
 		pin: true, // 애니메이션 완료 될 때까지 섹션 유지
 		markers: false,
-		onLeave:function(){
-			//화살표 지우기 removeClass 기점..
-		}
+		onEnterBack: function() {
+      $('.sc-intro .scroll').removeClass('hidden');
+    }
 	}
 });
+
 intro
 		.to(".sc-intro", {'--opacity': 1,}) 
-		.from(".sc-intro .d01", {autoAlpha: 0,},'<') // autoAlpha: 0에서 시작하,초 동안 1로 변화
+		.from(".sc-intro .d01", {autoAlpha: 0,},'<') 
     .to(".sc-intro .d01", {autoAlpha: 0,
 			onStart:function(){
 				$('#header').addClass('on');
 			},
 			onReverseComplete:function(){
 				$('#header').removeClass('on');
-			}
+			},
 		})
     .from(".sc-intro .d02", {autoAlpha: 0,})
     .to(".sc-intro .d02", {autoAlpha: 0,})
     .from(".sc-intro .d03", {autoAlpha: 0,})
     .to(".sc-intro .d03", {autoAlpha: 0,})
-    .from(".sc-intro .d04", {autoAlpha: 0,})
-
+    .from(".sc-intro .d04", {autoAlpha: 0,
+			onComplete: function(){
+				$('.sc-intro .scroll').addClass('hidden');
+			},
+		})
 
 //비주얼
-//우뜨케 해야해ㅐ......우뜨..우뜨케,,.......아아아앙앙 이게 맞ㅈ나..
 const visual = gsap.timeline({
 	scrollTrigger: {
 			trigger: ".sc-visual",
@@ -87,16 +67,18 @@ const visual = gsap.timeline({
 });
 
 visual
-//딤드 넣기
-	.from(".sc-visual .headline", { autoAlpha: 0, duration: 200 },)
-	.to(".sc-visual .headline span:nth-child(1)", { xPercent: 100, duration: 100 }, 'b')
-	.to(".sc-visual .headline span:nth-child(3)", { xPercent: -100, duration: 100 }, 'b')
-	.to(".sc-visual .headline", { autoAlpha: 0, duration: 100 }, 'c')
-	.to(".sc-visual .bg:nth-child(3)", { height: 0, duration: 100 })
-	.to(".sc-visual .bg:nth-child(2)", { height: 0, duration: 100 })
-	.from(".sc-visual .desc", { autoAlpha: 0, duration: 100 });
+	.to(".sc-visual", {'--opacity': 1,}) 
+	.from(".sc-visual .headline", { autoAlpha: 0,},)
+	.to(".sc-visual .headline span:nth-child(1)", { xPercent: 100,},'b')
+	.to(".sc-visual .headline span:nth-child(3)", { xPercent: -100,}, 'b')
+	.to(".sc-visual", {'--opacity': 0,}) 
+	.to(".sc-visual .headline", { autoAlpha: 0,}, 'c')
+	.to(".sc-visual .bg:nth-child(3)", { height: 0,},)
+	.to(".sc-visual .bg:nth-child(2)", { height: 0,},)
+	.from(".sc-visual .desc", { autoAlpha: 0,},)
+	.to(".sc-visual", {'--opacity': 1,});
 
-	const eeee = gsap.timeline({
+	const possibility = gsap.timeline({
 		scrollTrigger: {
 				trigger: ".sc-possibility",
 				start: "top top",
@@ -104,12 +86,13 @@ visual
 				scrub: 0,
 				pin: true,
 				markers: false,
-				//리사이증시 값 갱신
+				//리사이징시 값 갱신
 				invalidateOnRefresh:true,
 		}
 	});
-	eeee.to('.sc-possibility .group-x',{xPercent:-100})
-	eeee.to('.sc-possibility .group-x',{
+	possibility
+	.to('.sc-possibility .group-x',{xPercent:-100})
+	.to('.sc-possibility .group-x',{
 		x:function(){
 			return window.innerWidth-100;
 		}
@@ -126,8 +109,9 @@ visual
 			}
 		});
 	
-		prove.to($(el).find('.headline span'),{x:0})
-		.from($(el),{'--x':100},'<')
+		prove
+		.to($(el).find('.headline span'),{x:0})//// headline span의 x 위치를 0으로
+		.from($(el),{'--x':100},'<')// 요소의 '--x' CSS 변수를 100으로 애니메이션
 	})
 
 	const color = gsap.timeline({
@@ -139,7 +123,8 @@ visual
 				// markers: true,
 		}
 	});
-	color.from('.sc-color .box:nth-child(1)',{xPercent:-50})
+	color
+	.from('.sc-color .box:nth-child(1)',{xPercent:-50})
 	.from('.sc-color .box:nth-child(2)',{xPercent:-50},'<')
 	.from('.sc-color .box:nth-child(3)',{xPercent:50},'<')
 	const color2 = gsap.timeline({
@@ -210,35 +195,13 @@ ScrollTrigger.create({
 		gsap.set('.area1 .card-list',{autoAlpha:1})
 	}
 });
-// 헤더..
-// ScrollTrigger.create({
-// 	trigger: ".sc-gig", 
-// 	start: "top top", 
-// 	end: "bottom bottom", 
-// 	endTrigger: ".sc-prove",
-// 	markers:false,
-// 	onEnter: function() {
-// 			$('#header').addClass('dark'); 
-// 	},
-// 	onLeaveBack: function() {
-// 			$('#header').removeClass('dark'); 
-// 	}
-// });
-	ScrollTrigger.create({
-    trigger: `[data-theme="dark"]`, 
-    start: "top 50%", 
-    end: "bottom 50%", 
-    toggleClass:{
-			targets:"body",
-			className:"dark"
-		}
-});
+
+
 ScrollTrigger.create({
-	trigger: ".sc-desc", 
+	trigger: ".sc-gig", 
 	start: "top top", 
 	end: "bottom bottom", 
 	markers:false,
-	endTrigger: "",
 	onEnter: function() {
 		$('#header').addClass('dark'); 
 	},
@@ -247,13 +210,35 @@ ScrollTrigger.create({
 	}
 });
 
+ScrollTrigger.create({
+	trigger: `[data-theme="dark"]`, 
+	start: "top 50%", 
+	end: "bottom 50%", 
+	toggleClass:{
+		targets:"body",
+		className:"dark"
+	},
+	onEnter: function() {
+    $('#header').removeClass('dark'); // 뷰포트에 들어올 때 dark 클래스 제거
+  },
+  onLeave: function() {
+    $('#header').addClass('dark'); // 뷰포트에서 벗어날 때 dark 클래스 추가
+  },
+  onEnterBack: function() {
+    $('#header').removeClass('dark'); // 스크롤을 위로 올려서 다시 뷰포트에 들어올 때 dark 클래스 제거
+  },
+  onLeaveBack: function() {
+    $('#header').addClass('dark'); // 스크롤을 아래로 내려서 벗어날 때 dark 클래스 추가
+  },
+});
+
 //prove
 //footer
 ScrollTrigger.create({
 	trigger:'#footer',
 	start:'90% bottom',//[트리거 기준 시작]  [윈도우 기준&화면 기준]
 	end:'bottom bottom',//[트리거 기준 끝] [윈도우 기준&화면 기준]
-	markers:true,
+	// markers:true,
 	onEnter:function(){
 		$('.sc-banner').removeClass('on');
 	},
@@ -281,7 +266,7 @@ ScrollTrigger.create({
   start: "top top",
   end: "bottom bottom",
   endTrigger: "#footer",
-  markers: true,
+  // markers: true,
   onUpdate: function (e) {// 스크롤이 움직일 때마다 호출
     direction = e.direction; // 스크롤 방향을 나타냄 아래로 스크롤 하는 경우(1) 위로 스크롤 하는 경우 -1
     if (direction == 1) {
