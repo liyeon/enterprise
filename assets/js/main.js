@@ -92,8 +92,8 @@ visual
 		}
 	});
 	possibility
-	.to('.sc-possibility .group-x',{xPercent:-100})
-	.to('.sc-possibility .group-x',{
+	.to('.sc-possibility .group-possibility',{xPercent:-100})
+	.to('.sc-possibility .group-possibility',{
 		x:function(){
 			return window.innerWidth-100;
 		}
@@ -104,7 +104,7 @@ const area1Headline = $('.sc-safety .area1 .headline');
 const area1 = gsap.timeline({
 	scrollTrigger: {
 			trigger: ".area1",
-			start: "top 95%",
+			start: "top top",
 			end: "100% 80%",
 			scrub: 0,
 			// markers: true,
@@ -114,7 +114,7 @@ const area1 = gsap.timeline({
 			onUpdate:function(self){
 				// console.log(self.progress);
 				if(self.progress >= 0.5){
-
+					//전통금융 -> 미래금융으로
 				}else{
 
 				}
@@ -137,7 +137,7 @@ area1
 
 const color = gsap.timeline({
 	scrollTrigger: {
-			trigger: ".sc-color",
+			trigger: ".group-color",
 			start: "top 95%",
 			end: "100% 80%",
 			scrub: 0,
@@ -146,25 +146,25 @@ const color = gsap.timeline({
 });
 
 color
-.from('.sc-color .box:nth-child(1)',{xPercent:-50})
-.from('.sc-color .box:nth-child(2)',{xPercent:-50},'<')
-.from('.sc-color .box:nth-child(3)',{xPercent:50},'<')
+.from('.group-color .box:nth-child(1)',{xPercent:-50})
+.from('.group-color .box:nth-child(2)',{xPercent:-50},'<')
+.from('.group-color .box:nth-child(3)',{xPercent:50},'<')
 const color2 = gsap.timeline({
 	scrollTrigger: {
-			trigger: ".sc-color",
+			trigger: ".group-color",
 			start: "top 45%",
 			end: "100% 30%",
 			scrub: 0,
 			// markers: true,
 			onEnter:function(){
-				$('.sc-color').addClass('show')
+				$('.group-color').addClass('show')
 			},
 			onLeaveBack:function(){
-				$('.sc-color').removeClass('show')
+				$('.group-color').removeClass('show')
 			}
 	}
 });
-color2.from('.sc-color .headline',{autoAlpha:0})
+color2.from('.group-color .headline',{autoAlpha:0})
 
 gsap.set('.area2 .left-wrap',{autoAlpha:0})
 ScrollTrigger.create({
@@ -182,9 +182,57 @@ ScrollTrigger.create({
 	}
 });
 
+const area3 = gsap.timeline({
+	scrollTrigger: {
+			trigger: ".area3",
+			start: "top top",
+			end: "bottom bottom",
+			scrub: 0,
+			// markers: true,
+			invalidateOnRefresh:true,
+			onEnter:function(){
+				gsap.set(".area2 .card-item.gradient", { opacity: 0 });
+        gsap.set(".area3 .card-item.gradient", {opacity: 1,});
+				// gsap.set('.area3 .card-item .bg', { filter: 'blur(50px)' });
+			},
+			onLeaveBack:function(){
+				gsap.set(".area2 .card-item.gradient", { opacity: 1 });
+        gsap.set(".area3 .card-item.gradient", {opacity: 0,})
+			},
+	}
+});
+gsap.set('.sc-safety .area3 .card-item:nth-child(1)', { zIndex: 4 });
+gsap.set('.sc-safety .area3 .card-item:nth-child(2)', { zIndex: 3 });
+gsap.set('.sc-safety .area3 .card-item:nth-child(3)', { zIndex: 2 });
+gsap.set('.sc-safety .area3 .card-item:nth-child(4)', { zIndex: 1});
+area3
+.to('.sc-safety .area3 .card-item:nth-child(2)',{x:40*-1,xPercent:-100},'a')
+.to('.sc-safety .area3 .card-item:nth-child(3)',{x:40*-2,xPercent:-100*2},'a')
+.to('.sc-safety .area3 .card-item:nth-child(4)',{x:40*-3,xPercent:-100*3},'a')
+
+const area4 = gsap.timeline({
+	scrollTrigger: {
+			trigger: ".area4",
+			start: "top top",
+			end: "bottom bottom",
+			markers: true,
+			invalidateOnRefresh:true,
+			onEnter:function(){
+				gsap.set(".area3", { opacity: 0 });
+        gsap.set(".area4 .card-item", {opacity: 1,});
+				$('.area4 .headline').addClass('on');
+			},
+			onLeaveBack:function(){
+				gsap.set(".area3", { opacity: 1 });
+        gsap.set(".area4 .card-item", {opacity: 0,});
+				$('.area4 .headline').removeClass('on');
+			},
+	}
+});
+
 
 ScrollTrigger.create({
-	trigger: ".sc-gig", 
+	trigger: ".sc-worker", 
 	start: "top top", 
 	end: "bottom bottom", 
 	markers:false,
@@ -219,7 +267,7 @@ ScrollTrigger.create({
 });
 
 //prove
-$('.sc-prove').each(function(i,el){
+$('.group-prove').each(function(i,el){
 	const prove = gsap.timeline({
 		scrollTrigger: {
 				trigger: el,

@@ -92,7 +92,7 @@
 }
 
 /*긱워커*/
-.sc-gig {
+.group-gig {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -101,7 +101,7 @@
   margin: 0 100px;
 }
 
-.sc-gig .desc {
+.group-gig .desc {
   font-size: 24px;
   line-height: 1.67em;
   padding-right: 80px;
@@ -109,7 +109,7 @@
 }
 
 /* 가치를 증명~ */
-.sc-prove {
+.group-prove {
   position: relative;
   padding: 218px 0 226px;
   background: url(../images/challenge/prove.jpg) no-repeat center/cover;
@@ -117,36 +117,36 @@
   --x: 0;
 }
 
-.sc-prove.bg2 {
+.group-prove.bg2 {
   background: url(../images/prove.jpg) no-repeat center/cover;
 }
 
-.sc-prove .headline {
+.group-prove .headline {
   display: flex;
   align-items: center;
   flex-direction: column;
   color: #fff;
   text-align: center;
 }
-.sc-prove.bg2 {
+.group-prove.bg2 {
   background: url(../images/prove.jpg) no-repeat center/cover;
 }
 
-.sc-prove .headline span:nth-child(1) {
+.group-prove .headline span:nth-child(1) {
   transform: translateX(-172%);
 }
-.sc-prove .headline span:nth-child(3) {
+.group-prove .headline span:nth-child(3) {
   transform: translateX(134%);
 }
-.sc-prove.bg2 .headline span:nth-child(1) {
+.group-prove.bg2 .headline span:nth-child(1) {
   transform: translateX(-114%);
 }
-.sc-prove.bg2 .headline span:nth-child(3) {
+.group-prove.bg2 .headline span:nth-child(3) {
   transform: translateX(120%);
 }
 
-.sc-prove::after,
-.sc-prove::before {
+.group-prove::after,
+.group-prove::before {
   content: '';
   position: absolute;
   max-width: 21.875%;
@@ -155,25 +155,25 @@
   background-color: #fff;
 }
 
-.sc-prove:after {
+.group-prove:after {
   bottom: 0;
   left: 0;
   transform: translateX(calc(var(--x) * -1%));/*-값으로 만들기 위해 x-1*/
 }
 
-.sc-prove::before {
+.group-prove::before {
   top: 0;
   right: 0;
   transform: translateX(calc(var(--x) * 1%));/*-값으로 만들기 위해 x1*/
 }
 
 /* 다양한 재능 */
-.sc-talent {
+.group-talent {
   display: flex;
   margin: 0 100px;
 }
 
-.sc-talent .headline {
+.group-talent .headline {
   display: flex;
   align-items: center;
   position: sticky;
@@ -182,7 +182,7 @@
   width: 470px;
 }
 
-.sc-talent .group-img {
+.group-talent .img-area {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -190,15 +190,15 @@
   padding: 100vh 0;
 }
 
-.sc-talent .group-img .img-box:nth-of-type(odd) {
+.group-talent .img-area .img-box:nth-of-type(odd) {
   align-self: flex-end;
 }
 
-.sc-talent .group-img .img-box {
+.group-talent .img-area .img-box {
   max-width: 46.4%;
 }
 
-.sc-talent .group-img .img-box figcaption {
+.group-talent .img-area .img-box figcaption {
   margin: 12px 0 0;
   font-size: 16px;
 }
@@ -212,6 +212,7 @@
   position: relative;
   min-height: 100vh;
   overflow: hidden;
+  padding: 0 100px;
 }
 
 .sc-possibility .headline {
@@ -220,7 +221,7 @@
 
 .sc-possibility .desc {
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
   font-size: 14px;
   line-height: 1.63em;
   color: rgba(255, 255, 255, 0.6);
@@ -256,7 +257,7 @@
 }
 
 .sc-possibility .cube-area {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   position: relative;
   min-width: 100vw;
 }
@@ -300,13 +301,35 @@
   line-height: 1.63em;
 }
 
+
+/* anytime */
+.sc-anytime {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  min-height: 100vh;
+  margin-top: 200px;
+}
+.sc-anytime .group-text{
+  padding: 0 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.sc-anytime .desc {
+  font-size: 24px;
+  line-height: 1.67em;
+  margin-left: auto;
+}
 /* color */
-.sc-color {
+.group-color {
+  margin-top: 200px;
   position: relative;
   height: 175px;
 }
 
-.sc-color .headline {
+.group-color .headline {
   width: 100%;
   position: absolute;
   z-index: 1;
@@ -317,12 +340,12 @@
   text-align: center;
 }
 
-.sc-color .group-color {
+.group-color .box-wrap {
   display: flex;
   height: 100%;
 }
 
-.sc-color .group-color::after {
+.group-color .box-wrap::after {
   content: '';
   position: absolute;
   height: 100%;
@@ -332,42 +355,63 @@
   transition: opacity .3s;
 }
 
-.sc-color.show .group-color::after {
+.group-color.show .box-wrap::after {
   opacity: 1;
 }
 
-.sc-color .box {
+.group-color .box {
   flex: 1;
 }
 
 /*safety*/
-
+/* .sc-safety{
+  padding: 0 100px;
+} */
 .sc-safety .area1 {
   height: 500vh;
   /* border: 10px solid red; */
 }
-
+.group-safety{
+  margin-left: 100px;
+}
 .sc-safety .area1 .sticky-wrapper {
   height: 600vh;
   /* border: 10px solid green; */
-
-}
-
-.sc-safety .area2 {
-  /* padding-bottom: 100vh; */
 }
 
 .sc-safety .area2 .right-wrap {
   padding-bottom: 100vh;
 }
-
 .sc-safety .area3 {
-  /* border: 5px solid aqua; */
-  height: 400vh;
+  /* border: 5px solid aqua;/ */
+  height: 500vh;
 }
-
+.sc-safety .area3 .group-creator{
+  margin: 0 100px;
+}
 .sc-safety .area3 .sticky {
   margin-top: -100vh;
+}
+.sc-safety .area3 .sticky-wrapper {
+  height: 600vh;
+  /* border: 10px solid green; */
+}
+.sc-safety .area3 .card-item.gradient {
+  opacity: 0;
+  background-color: #000;
+}
+.sc-safety .area4{
+  height: 200vh;
+}
+.sc-safety .area4 .card-item{
+  opacity: 0;
+}
+.sc-safety .area4 .headline{
+  opacity: 0;
+}
+.sc-safety .area4 .headline.on{
+  transition: .3s;
+  opacity: 1;
 }
 
 .sticky {
@@ -375,12 +419,17 @@
   top: 0;
   height: 100vh;
   overflow: hidden;
+  display: flex;
 }
 
-.sc-safety .group-x {
+.group-anyone{
   height: 100vh;
+  margin-left: 100px;
 }
 
+/* .sc-safety .group-x {
+  height: 100vh;f
+} */
 .sc-safety .group-x .headline {
   padding-right: 160px;
 }
@@ -413,12 +462,13 @@
   position: sticky;
   height: 100vh;
   top: 0;
+  margin-left: 100px;
 }
 
 .sc-safety .right-wrap {
   flex: 1;
   color: #fff;
-  padding: 100vh 0 0 100px;
+  padding: 100vh 0 0 200px;
 }
 
 .sc-safety .right-wrap .desc {
@@ -485,6 +535,7 @@
   display: flex;
   align-items: center;
 }
+
 
 .group-anyone .gradient::before {
   content: "";
@@ -762,10 +813,9 @@
 
 .sc-banner .group-banner {
   margin-left: -100%;
-  animation: banner-scroll 8s linear infinite;
+  animation: banner-scroll 10s linear infinite;
   display: flex;
   flex-wrap: nowrap;
-  min-width: 100%;
   color: #fff;
 }
 
