@@ -509,11 +509,12 @@
 .sc-safety .right-wrap .service-list {
   display: flex;
   margin-top: 80px;
+  margin-right: 100px;
   gap: 50px;
 }
 
 .sc-safety .right-wrap .service-item {
-  width: 300px;
+  flex: 1;
 }
 
 .sc-safety .right-wrap .service-item figcaption {
@@ -568,29 +569,19 @@
 }
 
 /* 금융 */
-/* .sc-finance,
-.sc-wisely {
-  display: flex;
-  align-items: center;
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-} */
+
 
 .sc-finance .headline,
 .sc-creator .headline {
   padding-right: 160px;
 }
 
-.sc-finance .sticky-area,
-.sc-creator .wisely-area{
-  height: 200vh;
+.sc-finance{
+  position: relative;
 }
-.sc-finance .sticky-wrapper
-.sc-creator .sticky-wrapper{
-  height: 300vh;
+.sc-finance .sticky{
+  align-items: center;
 }
-/* .sc-finance .sticky{} */
 .sc-finance .card-top .caption {
   font-size: 16px;
   position: absolute;
@@ -598,7 +589,8 @@
   top: 30px;
 }
 .sc-finance .group-finance{
-  height: 100vh;
+  height:200vh;
+  align-items:normal;
   padding-left: 100px;
 }
 
@@ -640,13 +632,16 @@
 }
 
 .group-arrow {
-  position: absolute;
+  position: fixed;
   bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   gap: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
 }
 
 .arrow-area {
@@ -740,15 +735,20 @@
 }
 .sc-creator .group-creator {
   position: relative;
-  height: 100vh;
+  height: 200vh;
 }
-
-.sc-creator .group-creator .bg {
+.sc-creator .group-creator .bg-wrap{
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index:-1;
+}
+.sc-creator .group-creator .bg {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
 }
 
 .sc-creator .group-creator .title-area {

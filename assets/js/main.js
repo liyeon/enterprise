@@ -109,16 +109,6 @@ const area1 = gsap.timeline({
 			scrub: 0,
 			// markers: true,
 			invalidateOnRefresh:true,
-			// onEnter:function(){},
-			// onLeaveBack:function(){},
-			// onUpdate:function(self){
-			// 	// console.log(self.progress);
-			// 	if(self.progress >= 0.5){
-			// 		//전통금융 -> 미래금융으로
-			// 	}else{
-
-			// 	}
-			// }
 	}
 });
 area1
@@ -240,10 +230,7 @@ const finance = gsap.timeline({
 			start: "top top",
 			end: "bottom bottom",
 			scrub: 0,
-			// markers: true,
 			invalidateOnRefresh:true,
-			// onEnter:function(){},
-			// onLeaveBack:function(){},
 			onUpdate:function(self){
 				if(self.progress >= 0.5){
 					gsap.set(".tradition", { autoAlpha: 0 });
@@ -252,16 +239,41 @@ const finance = gsap.timeline({
 					gsap.set(".tradition", { autoAlpha: 1 });
 					gsap.set(".future", { autoAlpha: 0 });
 				}
+			},
+			onEnter: () => {
+				gsap.to(".group-arrow", { autoAlpha:1 });
+			},
+			onLeave: () => {
+				gsap.to(".group-arrow", { autoAlpha:0 });
+			},
+			onEnterBack: () => {
+				gsap.to(".group-arrow", { autoAlpha:1 });
+			},
+			onLeaveBack: () => {
+				gsap.to(".group-arrow", { autoAlpha:0 });
 			}
 	}
 });
 finance
 .to('.sc-finance .group-x',{
 	x:function() {
-		return financeHeadline.outerWidth()*-1;
-	}
+		return financeHeadline.outerWidth()*-1.7;
+	},
 })
 
+const creator = gsap.timeline({
+	scrollTrigger: {
+			trigger: ".group-creator",
+			start: "top top",
+			end: "bottom bottom",
+			scrub: 0,
+			invalidateOnRefresh:true,
+	}
+});
+creator
+.from(".group-creator .title-area", {autoAlpha: 0,}) 
+.to(".group-creator .title-area", {autoAlpha: 1,},) 
+.to(".group-creator .scroll", {autoAlpha: 1,},) 
 
 ScrollTrigger.create({
 	trigger: ".sc-worker", 
