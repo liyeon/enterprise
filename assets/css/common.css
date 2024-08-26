@@ -13,6 +13,14 @@ body.dark{
   color: #fff;
 }
 
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
 .pink{
   background: #e657af;
 }
@@ -90,9 +98,7 @@ body.dark{
   display: flex;
   align-items: center;
   white-space: nowrap;
-  /* overflow-x: auto; */
   width: max-content; /*짤린거 인식 가능*/
-  /* transform: translateX(x); */
 }
 
 .card-list{
@@ -115,16 +121,20 @@ body.dark{
   position: relative;
 }
 
-.card-item:has(> .bg){
+.card-item:has(> .card-bg){
   border: 0;
   overflow: hidden;
 }
-.card-item .bg{
+.card-item .card-bg{
   position: absolute;
   top: 0;
   left: 0;
-  /* filter: blur(50px); */
-  background-color: #fff;
+  width: 100%;
+  height: auto;
+  background-color: #b3b3b3;
+}
+.card-item .card-bg.blur{
+  filter: blur(20px);
 }
 
 .card-item .card-top{

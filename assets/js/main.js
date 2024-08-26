@@ -109,16 +109,16 @@ const area1 = gsap.timeline({
 			scrub: 0,
 			// markers: true,
 			invalidateOnRefresh:true,
-			onEnter:function(){},
-			onLeaveBack:function(){},
-			onUpdate:function(self){
-				// console.log(self.progress);
-				if(self.progress >= 0.5){
-					//전통금융 -> 미래금융으로
-				}else{
+			// onEnter:function(){},
+			// onLeaveBack:function(){},
+			// onUpdate:function(self){
+			// 	// console.log(self.progress);
+			// 	if(self.progress >= 0.5){
+			// 		//전통금융 -> 미래금융으로
+			// 	}else{
 
-				}
-			}
+			// 	}
+			// }
 	}
 });
 area1
@@ -169,7 +169,7 @@ color2.from('.group-color .headline',{autoAlpha:0})
 gsap.set('.area2 .left-wrap',{autoAlpha:0})
 ScrollTrigger.create({
 	trigger: '.area2', 
-	start: "0 0 ", 
+	start: "0 0", 
 	end: "bottom bottom", 
 	// markers:true,
 	onEnter:function(){
@@ -193,7 +193,10 @@ const area3 = gsap.timeline({
 			onEnter:function(){
 				gsap.set(".area2 .card-item.gradient", { opacity: 0 });
         gsap.set(".area3 .card-item.gradient", {opacity: 1,});
-				// gsap.set('.area3 .card-item .bg', { filter: 'blur(50px)' });
+				gsap.to('.area3 .card-item .bg', { 
+					filter: 'blur(20px)', 
+					duration: 1 // 애니메이션 속도(1초 동안 블러 효과 적용)
+				});
 			},
 			onLeaveBack:function(){
 				gsap.set(".area2 .card-item.gradient", { opacity: 1 });
@@ -215,7 +218,7 @@ const area4 = gsap.timeline({
 			trigger: ".area4",
 			start: "top top",
 			end: "bottom bottom",
-			markers: true,
+			// markers: true,
 			invalidateOnRefresh:true,
 			onEnter:function(){
 				gsap.set(".area3", { opacity: 0 });
@@ -229,6 +232,35 @@ const area4 = gsap.timeline({
 			},
 	}
 });
+
+const financeHeadline = $('.sc-finance .headline');
+const finance = gsap.timeline({
+	scrollTrigger: {
+			trigger: ".sc-finance",
+			start: "top top",
+			end: "bottom bottom",
+			scrub: 0,
+			// markers: true,
+			invalidateOnRefresh:true,
+			// onEnter:function(){},
+			// onLeaveBack:function(){},
+			onUpdate:function(self){
+				if(self.progress >= 0.5){
+					gsap.set(".tradition", { autoAlpha: 0 });
+					gsap.set(".future", { autoAlpha: 1 });
+				}else{
+					gsap.set(".tradition", { autoAlpha: 1 });
+					gsap.set(".future", { autoAlpha: 0 });
+				}
+			}
+	}
+});
+finance
+.to('.sc-finance .group-x',{
+	x:function() {
+		return financeHeadline.outerWidth()*-1;
+	}
+})
 
 
 ScrollTrigger.create({
