@@ -310,6 +310,7 @@
   position: relative;
   min-height: 100vh;
   margin-top: 200px;
+  overflow: hidden;
 }
 .sc-anytime .group-text{
   padding: 0 100px;
@@ -575,9 +576,15 @@
 .sc-creator .headline {
   padding-right: 160px;
 }
-
+.sc-finance .headline{
+  padding-left: 100px;
+}
 .sc-finance{
   position: relative;
+}
+.sc-creator .sticky-wrapper,
+.sc-finance .sticky-wrapper{
+  height: 200vh;
 }
 .sc-finance .sticky{
   align-items: center;
@@ -588,11 +595,10 @@
   right: 0;
   top: 30px;
 }
-.sc-finance .group-finance{
-  height:200vh;
+/* .sc-finance .group-finance{
   align-items:normal;
   padding-left: 100px;
-}
+} */
 
 .sc-finance .card-bottom {
   font-size: 16px;
@@ -737,6 +743,9 @@
   position: relative;
   height: 200vh;
 }
+.sc-creator .group-wisely .headline{
+  padding-left: 100px;
+}
 .sc-creator .group-creator .bg-wrap{
   position: absolute;
   top: 0;
@@ -774,7 +783,6 @@
 .group-wisely{
   display: flex;
   align-items: center;
-  height: 100vh;
 }
 .group-wisely .card-item {
   border: 0;

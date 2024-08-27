@@ -257,24 +257,48 @@ const finance = gsap.timeline({
 finance
 .to('.sc-finance .group-x',{
 	x:function() {
-		return financeHeadline.outerWidth()*-1.7;
+		return financeHeadline.outerWidth()*-1;
 	},
 })
 
 const creator = gsap.timeline({
 	scrollTrigger: {
-			trigger: ".group-creator",
+		trigger: ".sc-creator .group-creator",
+		start: "top top",
+			end: "bottom bottom",
+			scrub: 0,
+			// markers:true,
+			invalidateOnRefresh:true,
+		}
+});
+creator
+.from(".sc-creator .group-creator .title-area", {autoAlpha: 0,}) 
+.to(".sc-creator .group-creator .title-area", {autoAlpha: 1,},) 
+.from(".sc-creator .group-creator .scroll", {autoAlpha: 0,},) 
+.to(".sc-creator .group-creator .scroll", {autoAlpha: 1,},) 
+
+const wiselyHeadline = $('.group-wisely .headline');
+const wisely = gsap.timeline({
+	scrollTrigger: {
+			trigger: ".wisely-area",
 			start: "top top",
 			end: "bottom bottom",
 			scrub: 0,
 			invalidateOnRefresh:true,
+			onEnter:function(){
+				gsap.to('.group-wisely .card-bg', { 
+					filter: 'blur(20px)', 
+					duration: 1 // 애니메이션 속도(1초 동안 블러 효과 적용)
+				});
+			},
 	}
 });
-creator
-.from(".group-creator .title-area", {autoAlpha: 0,}) 
-.to(".group-creator .title-area", {autoAlpha: 1,},) 
-.to(".group-creator .scroll", {autoAlpha: 1,},) 
-
+wisely
+.to('.wisely-area .group-x',{
+	x:function() {
+		return wiselyHeadline.outerWidth()*-1.5;
+	},
+})
 ScrollTrigger.create({
 	trigger: ".sc-worker", 
 	start: "top top", 
@@ -358,11 +382,10 @@ ScrollTrigger.create({
 ScrollTrigger.create({
 	trigger: ".sc-visual",
 	start: "top top",
-	end: "bottom bottom",
-	endTrigger: ".sc-ground",
-	// markers: true,
-	onUpdate: function (e) {// 스크롤이 움직일 때마다 호출
-		direction = e.direction; // 스크롤 방향을 나타냄 아래로 스크롤 하는 경우(1) 위로 스크롤 하는 경우 -1
+	end: () => $(".wisely-area").offset().top + "px",
+	markers: true,
+	onUpdate: function (e) {
+		direction = e.direction; 
 		if (direction == 1) {
 			$(".btn-top").removeClass("on");
 		} else {
