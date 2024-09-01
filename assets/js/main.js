@@ -208,6 +208,7 @@ const area4 = gsap.timeline({
 			trigger: ".area4",
 			start: "top top",
 			end: "bottom bottom",
+			scrub:0,
 			// markers: true,
 			invalidateOnRefresh:true,
 			onEnter:function(){
@@ -222,7 +223,7 @@ const area4 = gsap.timeline({
 			},
 	}
 });
-
+area4.to('.area4 .headline',{opacity:1});
 const financeHeadline = $('.sc-finance .headline');
 const finance = gsap.timeline({
 	scrollTrigger: {
@@ -240,24 +241,26 @@ const finance = gsap.timeline({
 					gsap.set(".future", { autoAlpha: 0 });
 				}
 			},
-			onEnter: () => {
-				gsap.to(".group-arrow", { autoAlpha:1 });
-			},
-			onLeave: () => {
-				gsap.to(".group-arrow", { autoAlpha:0 });
-			},
-			onEnterBack: () => {
-				gsap.to(".group-arrow", { autoAlpha:1 });
-			},
-			onLeaveBack: () => {
-				gsap.to(".group-arrow", { autoAlpha:0 });
-			}
+			toggleClass:'on',
+			// onEnter: () => {
+			// 	gsap.to(".group-arrow", { autoAlpha:1 });
+			// },
+			// onLeave: () => {
+			// 	gsap.to(".group-arrow", { autoAlpha:0 });
+			// },
+			// onEnterBack: () => {
+			// 	gsap.to(".group-arrow", { autoAlpha:1 });
+			// },
+			// onLeaveBack: () => {
+			// 	gsap.to(".group-arrow", { autoAlpha:0 });
+			// }
 	}
 });
 finance
 .to('.sc-finance .group-x',{
+	xPercent:-100,
 	x:function() {
-		return financeHeadline.outerWidth()*-1;
+		return window.outerWidth;
 	},
 })
 
@@ -295,8 +298,9 @@ const wisely = gsap.timeline({
 });
 wisely
 .to('.wisely-area .group-x',{
+	xPercent:-100,
 	x:function() {
-		return wiselyHeadline.outerWidth()*-1.5;
+		return window.outerWidth;
 	},
 })
 ScrollTrigger.create({
