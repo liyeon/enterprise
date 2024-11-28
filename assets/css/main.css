@@ -628,7 +628,7 @@
 
 .group-finance .desc,
 .group-wisely .desc {
-  padding-left: 160px;
+  padding: 0 160px;
   font-size: 24px;
   line-height: 1.67;
 }
@@ -854,11 +854,11 @@
 }
 
 .sc-banner .group-banner {
-  margin-left: -100%;
   animation: banner-scroll 10s linear infinite;
   display: flex;
   flex-wrap: nowrap;
   color: #fff;
+	width: max-content;
 }
 
 .sc-banner .group-banner::after {
@@ -885,5 +885,5 @@
 
 @keyframes banner-scroll {
   0% {transform: translateX(0);}
-  100% {transform: translateX(50%);}
+  100% {transform: translateX(-50%);}
 }

@@ -107,7 +107,7 @@ const area1 = gsap.timeline({
 			start: "top top",
 			end: "100% 80%",
 			scrub: 0,
-			// markers: true,
+			markers: false,
 			invalidateOnRefresh:true,
 	}
 });
@@ -131,7 +131,7 @@ const color = gsap.timeline({
 			start: "top 95%",
 			end: "100% 80%",
 			scrub: 0,
-			// markers: true,
+			markers: false,
 	}
 });
 
@@ -145,7 +145,7 @@ const color2 = gsap.timeline({
 			start: "top 45%",
 			end: "100% 30%",
 			scrub: 0,
-			// markers: true,
+			markers: false,
 			onEnter:function(){
 				$('.group-color').addClass('show')
 			},
@@ -161,7 +161,7 @@ ScrollTrigger.create({
 	trigger: '.area2', 
 	start: "0 0", 
 	end: "bottom bottom", 
-	// markers:true,
+	markers:false,
 	onEnter:function(){
 		gsap.set('.area2 .left-wrap',{autoAlpha:1})
 		gsap.set('.area1 .card-list',{autoAlpha:0})
@@ -178,7 +178,7 @@ const area3 = gsap.timeline({
 			start: "top top",
 			end: "bottom bottom",
 			scrub: 0,
-			// markers: true,
+			markers: false,
 			invalidateOnRefresh:true,
 			onEnter:function(){
 				gsap.set(".area2 .card-item.gradient", { opacity: 0 });
@@ -209,7 +209,7 @@ const area4 = gsap.timeline({
 			start: "top top",
 			end: "bottom bottom",
 			scrub:0,
-			// markers: true,
+			markers: false,
 			invalidateOnRefresh:true,
 			onEnter:function(){
 				gsap.set(".area3", { opacity: 0 });
@@ -270,7 +270,7 @@ const creator = gsap.timeline({
 		start: "top top",
 			end: "bottom bottom",
 			scrub: 0,
-			// markers:true,
+			markers:false,
 			invalidateOnRefresh:true,
 		}
 });
@@ -360,7 +360,7 @@ ScrollTrigger.create({
 	trigger:'#footer',
 	start:'90% bottom',//[트리거 기준 시작]  [윈도우 기준&화면 기준]
 	end:'bottom bottom',//[트리거 기준 끝] [윈도우 기준&화면 기준]
-	// markers:true,
+	markers:false,
 	onEnter:function(){
 		$('.sc-banner').removeClass('on');
 	},
@@ -387,7 +387,7 @@ ScrollTrigger.create({
 	trigger: ".sc-visual",
 	start: "top top",
 	end: () => $(".wisely-area").offset().top + "px",
-	markers: true,
+	markers: false,
 	onUpdate: function (e) {
 		direction = e.direction; 
 		if (direction == 1) {
